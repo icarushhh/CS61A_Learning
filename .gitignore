@@ -2,3 +2,6 @@
 .vscode/
 *.xcodeproj
 .idea/
+.ok_history
+.ok_messages
+*.db
