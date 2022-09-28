@@ -5,3 +5,4 @@
 .ok_history
 .ok_messages
 *.db
+__pycache__
