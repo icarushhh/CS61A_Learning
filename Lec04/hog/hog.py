@@ -323,13 +323,27 @@ def square_strategy(score, opponent_score, threshold=12, num_rolls=6):
     # END PROBLEM 11
 
 
-def final_strategy(score, opponent_score):
+def final_strategy(score, opponent_score, dice=six_sided, total_samples=1000):
     """Write a brief description of your final strategy.
 
     *** YOUR DESCRIPTION HERE ***
     """
     # BEGIN PROBLEM 12
-    return 6  # Remove this line once implemented.
+    roll_nums = 1
+    max_score, temp = 0, 0
+    average = make_averaged(roll_dice, total_samples)
+    for i in range(10):
+        temp = average(i + 1, dice)
+        if temp > max_score:
+            roll_nums = i + 1
+            max_score = temp
+
+    if tail_points(opponent_score) >= max_score:
+        return 0
+    elif square_update(0, score, opponent_score) - score >= max_score:
+        return 0
+    else:
+        return roll_nums
     # END PROBLEM 12
 
 
